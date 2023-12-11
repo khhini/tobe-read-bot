@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  toberead-bot:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    image: toberead-bot
+    restart: always
+    environment:
+      - PUBSUB_TOPIC=${PUBSUB_TOPIC}
+      - DISCROD_TOKEN=${DISCROD_TOKEN}
+      - GOOGLE_APPLICATION_CREDENTIALS=/var/google/secret/credentials.json
+    volumes:
+      - ./credentials.json:/var/google/secret/credentials.json
